@@ -1,13 +1,11 @@
 "use client";
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
-import { useTheme } from "./theme-provider";
 
 export default function Home() {
   const [formData, setFormData] = useState({ nome: "", whatsapp: "", email: "", servico: "" });
   const [enviando, setEnviando] = useState(false);
   const [sucesso, setSucesso] = useState(false); 
-  const { isDark, toggle } = useTheme();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,11 +22,11 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-4 sm:p-6 font-sans relative">
-<div className={`bg-white dark:bg-slate-900 rounded-3xl shadow-2xl w-full overflow-hidden border border-white/50 dark:border-slate-800 transition-all duration-500 ${sucesso ? 'max-w-3xl' : 'max-w-md'}`}>
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center p-4 sm:p-6 font-sans">
+      <div className={`bg-white rounded-3xl shadow-2xl w-full overflow-hidden border border-white/50 transition-all duration-500 ${sucesso ? 'max-w-3xl' : 'max-w-md'}`}>
         
-        <div className="bg-blue-950 dark:bg-blue-900 p-8 text-center relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-linear-to-b from-white/10 to-transparent pointer-events-none"></div>
+        <div className="bg-blue-950 p-8 text-center relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
           <div className="relative z-10">
             <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4 border border-white/20">
               <span className="text-2xl font-bold text-white tracking-wider">CTI</span>
@@ -105,9 +103,6 @@ export default function Home() {
           )}
         </div>
       </div>
-      <button onClick={toggle} className="absolute top-4 right-4 p-2 rounded-full bg-white dark:bg-slate-800 shadow-md border border-slate-200 dark:border-slate-700">
-        {isDark ? '☀️' : '🌙'}
-      </button>
     </main>
   );
 }
